@@ -10,6 +10,9 @@
 		6A06B0C91B1F360C00E8BACE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A06B0C81B1F360C00E8BACE /* Foundation.framework */; };
 		6A06B0CC1B1F360C00E8BACE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A06B0CB1B1F360C00E8BACE /* main.m */; };
 		6A06B0D01B1F360C00E8BACE /* helloworld.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6A06B0CF1B1F360C00E8BACE /* helloworld.1 */; };
+		6A06B0D81B1F65E400E8BACE /* Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A06B0D71B1F65E400E8BACE /* Circle.m */; };
+		6A6F13A41B21632600DE4DAE /* Circle+ellipse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6F13A31B21632600DE4DAE /* Circle+ellipse.m */; };
+		6AB7264B1B22CBD500B5AD59 /* XYPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB7264A1B22CBD500B5AD59 /* XYPoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +34,12 @@
 		6A06B0CB1B1F360C00E8BACE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6A06B0CE1B1F360C00E8BACE /* helloworld-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "helloworld-Prefix.pch"; sourceTree = "<group>"; };
 		6A06B0CF1B1F360C00E8BACE /* helloworld.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = helloworld.1; sourceTree = "<group>"; };
+		6A06B0D61B1F65E400E8BACE /* Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Circle.h; sourceTree = "<group>"; };
+		6A06B0D71B1F65E400E8BACE /* Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Circle.m; sourceTree = "<group>"; };
+		6A6F13A21B21632600DE4DAE /* Circle+ellipse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Circle+ellipse.h"; sourceTree = "<group>"; };
+		6A6F13A31B21632600DE4DAE /* Circle+ellipse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Circle+ellipse.m"; sourceTree = "<group>"; };
+		6AB726491B22CBD500B5AD59 /* XYPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPoint.h; sourceTree = "<group>"; };
+		6AB7264A1B22CBD500B5AD59 /* XYPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +85,12 @@
 				6A06B0CB1B1F360C00E8BACE /* main.m */,
 				6A06B0CF1B1F360C00E8BACE /* helloworld.1 */,
 				6A06B0CD1B1F360C00E8BACE /* Supporting Files */,
+				6A06B0D61B1F65E400E8BACE /* Circle.h */,
+				6A06B0D71B1F65E400E8BACE /* Circle.m */,
+				6A6F13A21B21632600DE4DAE /* Circle+ellipse.h */,
+				6A6F13A31B21632600DE4DAE /* Circle+ellipse.m */,
+				6AB726491B22CBD500B5AD59 /* XYPoint.h */,
+				6AB7264A1B22CBD500B5AD59 /* XYPoint.m */,
 			);
 			path = helloworld;
 			sourceTree = "<group>";
@@ -139,7 +154,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A6F13A41B21632600DE4DAE /* Circle+ellipse.m in Sources */,
 				6A06B0CC1B1F360C00E8BACE /* main.m in Sources */,
+				6A06B0D81B1F65E400E8BACE /* Circle.m in Sources */,
+				6AB7264B1B22CBD500B5AD59 /* XYPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +171,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -191,7 +209,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -253,6 +271,7 @@
 				6A06B0D51B1F360C00E8BACE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

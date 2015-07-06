@@ -249,6 +249,76 @@ void testKVO(){
     // [[circle origin] setX:12 andY:12];
 }
 
+int global = 1000;
+/**
+ *  测试代码块
+ */
+void testBlock(){
+    // 实例1
+    int multiplier = 5;
+    int (^myBlock)(int) = ^(int num){
+        return num * multiplier;
+    };
+    
+    // 调用块对象变量
+    int result = myBlock(6);
+    NSLog(@"%d", result);
+    
+    // 实例2：参数是NSString的代码块
+    void (^stringBlock)(NSString *) = ^(NSString *str){
+        NSLog(@"参数是字符串的代码块：%@", str);
+    };
+    stringBlock(@"hello world!");
+    
+    // 实例3: 字符串数组排序
+    NSArray *array = [NSArray arrayWithObjects:@"abc 1", @"abc 21", @"abc 12",@"abc 13",@"abc 05", nil];
+    // NSComparator是一个定义好的block
+    NSComparator sortBlock = ^(NSString *s1, NSString *s2){
+        return [s1 compare:s2];
+    };
+    NSArray *newArray = [array sortedArrayUsingComparator:sortBlock];
+    NSLog(@"字符串array排序 : %@", newArray);
+    
+    // 实例4：代码块的递归调用
+    static void (^recursionBlock)(int) = ^(int num){
+        if (num > 0) {
+            NSLog(@"num = %d", num);
+            recursionBlock(num - 1);
+        }
+    };
+    recursionBlock(4);
+    
+    // 实例5: 在代码块中使用全局变量和局部变量
+    void(^block)(void) = ^(void){
+        global++;
+        NSLog(@"global:%d", global);
+    };
+    block();
+    NSLog(@"global:%d", global);
+    
+    // 局部变量只能使用不能改变， 改变局部变量的值需要使用关键字__block
+    __block int local = 500;
+    void(^block2)(void) = ^(void){
+        local++;
+        NSLog(@"local:%d", local);
+    };
+    block2();
+    NSLog(@"local:%d", local);
+    
+    // 实例6: 使用类型定义typedef
+    typedef int(^MyBlock)(int ,int);
+    // 就可以利用这种类型来定义block变量了
+    MyBlock a,b;
+    a=^(int a,int b){
+        return a-b;
+    };
+    b=^(int n1,int n2){
+        return n1*n2;
+    };
+    NSLog(@"a = %d", a(2, 1));
+    NSLog(@"b = %d", b(2, 1));
+}
+
 int main(int argc, const char * argv[])
 {
     /*
@@ -264,7 +334,8 @@ int main(int argc, const char * argv[])
         // testMutableString();
         // testArray();
         // testKVC();
-        testKVO();
+        // testKVO();
+        testBlock();
     }
     return 0;
 }

@@ -1,26 +1,6 @@
 # iOS_Study
 the snippets for the study of iOS
 
-#main.m
-// 格式化输出日志
-testNSLog();
-
-// 类相关：定义，实现，初始化，深浅复制，property，category等
-testCircle();
-
-// 对象的引用计数
-testReferenceCounter();
-testReferenceCounter2();
-
-5. testStruct()
-    四种常用的结构(点，大小，矩形，范围)
-
-
-
-
-
-
-
 1. testNSLog()
     格式化输出日志
 2. testCircle() 
@@ -54,7 +34,5 @@ testReferenceCounter2();
     代码块
 16. testKVC()
     测试kvc(key value coding)
-8. testKVO()
+17. testKVO()
     测试KVO(key value observing)
-9. testBlock()
-    测试代码块block

@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "Circle.h"
 #import "Circle+ellipse.h"
+#import "ClassA.h"
+
+/**
+ *  格式化输出日志
+ */
 void testNSLog(){
     // %@ : Object
     NSString * str = @"Hello world!";
@@ -63,6 +68,9 @@ void testNSLog(){
     NSLog(@"long double : %Lf", alongdouble);
 }
 
+/**
+ *  类相关：定义，实现，初始化，深浅复制，property，category等
+ */
 void testCircle(){
     Circle * circle = [[Circle alloc] init];
     // [circle setR:3 andX:4 andY:5];
@@ -93,6 +101,9 @@ void testCircle(){
 
 }
 
+/**
+ *  引用计数
+ */
 void testReferenceCounter(){
     Circle * c = [[Circle alloc] init];
     NSLog(@"the reference counter1 is %ld" , [c retainCount]);
@@ -106,6 +117,9 @@ void testReferenceCounter(){
     // NSLog(@"the reference counter5 is %u" , [c retainCount]);
 }
 
+/**
+ *  引用计数
+ */
 void testReferenceCounter2(){
     XYPoint *p = [[XYPoint alloc] init];
     NSLog(@"p1:%ld", [p retainCount]);
@@ -130,9 +144,89 @@ void testReferenceCounter2(){
 }
 
 /**
- *  字符串读写文件
+ *  字符串
  */
-void testStringWithFile(){
+void testString(){
+    // 初始化(工厂行为：对象初始化)
+    // 行为
+    // 静态NSString  动态NSMutableString
+    NSString *str = @"123";
+    NSLog(@"%@", str);
+    // 类的行为
+    // 通过c字符串来构建一个oc字符串
+    // char *cstr = "嘿嘿";
+    // NSString *str1 = [NSString stringWithCharacters:cstr length:strlen(cstr)];
+    // NSLog(@"%@", str1);
+    // 通过类方法初始化
+    NSString * str2 = [NSString stringWithFormat:@"%d", 123];
+    NSLog(@"%@", str2);
+    
+    NSString * str3 = [NSString stringWithUTF8String:"猪婆生日快乐"];
+    NSLog(@"%@", str3);
+    
+    // NSString *str4 = [NSString stringWithString:@"hello"];
+    NSString *str4=@"hello";
+    NSLog(@"%@", str4);
+    
+    // 通过实例方法初始化
+    NSString * str5 = [[NSString alloc] initWithUTF8String:"猪婆"];
+    NSLog(@"%@", str5);
+    
+}
+
+/**
+ *  测试字符串的方法
+ */
+void testStringMethod(){
+    NSString * str = @"哈aBc1";
+    NSLog(@"%@", str);
+    // 大小写
+    str = [str uppercaseString];
+    NSLog(@"大写：%@", str);
+    str = [str lowercaseString];
+    NSLog(@"小写：%@", str);
+    // 长度
+    NSLog(@"the length : %lu", [str length]);
+    // 一个汉字占用三个字节
+    NSLog(@"the length : %lu", [str lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+    // 判断字符串中是否包含另一个字符串
+    NSRange rang = [str rangeOfString:@"1"];
+    NSLog(@"leng = %lu, location = %lu", rang.length, rang.location);
+    if(rang.location == NSNotFound){
+        NSLog(@"没有");
+    }else{
+        NSLog(@"有");
+    }
+    
+    // 字符串内容比较
+    NSLog(@"%@", [str isEqualToString:@"1"]?@"YES":@"NO");
+    
+    // 字符串转换为数字
+    NSString * snum = @"12.345";
+    NSLog(@"数字: %d", [snum intValue]);
+    NSLog(@"数字: %f", [snum doubleValue]);
+    
+    // 判断字符串是否以什么字符串开头或结尾
+    NSLog(@"是否以开头：%@", [snum hasPrefix:@"1"]?@"YES":@"NO");
+    NSLog(@"是否以结尾：%@", [snum hasSuffix:@"1"]?@"YES":@"NO");
+    
+    // 提取子串
+    NSLog(@"从指定位置开始的子串: %@", [snum substringFromIndex:1]);
+    NSLog(@"到某个位置的子串: %@", [snum substringToIndex:2]);
+    NSRange r = {1, 3};
+    NSLog(@"从指定位置到指定位置的子串：%@", [snum substringWithRange:r]);
+    
+    // 实例：倒序显示字符串
+    for (NSUInteger i = snum.length; i > 0; i--) {
+        
+        NSLog(@"%@", [snum substringWithRange:NSMakeRange(i-1, 1)]);
+    }
+    
+    // 去除字符串两端的空格
+    NSString * blankStr = @" say sad? ";
+    NSLog(@"替换字符串两端的空格：%@%@%@", @"I want,", [blankStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]], @"to it");
+    
+    // 字符串读写文件
     // NSString * str = @"hello world!";
     // 写文件
     // [str writeToFile:@"1.txt" atomically:NO encoding:NSUTF8StringEncoding error:nil];
@@ -143,6 +237,7 @@ void testStringWithFile(){
     // 输出错误信息
     NSLog(@"%@", error);
 }
+
 
 /**
  *  测试NSMutableString
@@ -180,13 +275,197 @@ void testMutableString(){
     NSLog(@"删除后：%@", mutableStr1);
 }
 
+/*
+ 四种常用的结构
+ */
+void testStruct(){
+    // OC中提供的结构： 点，大小，矩形，范围
+    // 点
+    CGPoint p = {100, 200};
+    // p = CGPointMake(100, 200);
+    // p.x = 100;
+    // p.y = 100;
+    NSLog(@"x=%g, y=%g", p.x, p.y);
+    
+    // 大小
+    CGSize s = {100, 200};
+    // s = CGSizeMake(10, 200);
+    NSLog(@"width=%g, height=%g", s.width, s.height);
+    
+    // 矩形
+    CGRect rect;
+    rect.origin.x = 10;
+    rect.origin.y = 20;
+    rect.size.width = 100;
+    rect.size.height = 50;
+    // rect = CGRectMake(10, 20, 100, 50);
+    
+    // 范围
+    NSRange range;
+    range.length = 10;
+    range.location = 10;
+    
+}
+
 /**
  *  测试数组NSArray
  */
 void testArray(){
     // 数组中只能保存对象， 不能保存基础数据类型数据
-    NSArray* array = @[@"123", @"ceshi", @"hello"]; // 静态数组
-    NSLog(@"数组大小: %ld", [array count]);
+    //    NSArray *array = @[@"123", @"456", @"hello"]; // 静态数组
+    //    NSArray *array = [NSArray arrayWithObjects:@"123", @"456", @"world", nil];
+    NSArray *array = [[NSArray alloc] initWithObjects:@"123", @456, nil];
+    NSLog(@"数组大小：%ld", [array count]);
+    // 遍历
+    //    for (int i = 0; i < [array count]; i++) {
+    //        NSLog(@"%@", [array objectAtIndex:i]);
+    //        NSLog(@"%@", array[i]);
+    //    }
+    //
+    //    for (NSString *str in array) {
+    //        NSLog(@"%@", str);
+    //    }
+    
+    //    NSMutableArray *mutableArray = @[@"123", @"456", @"hello"];
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:20];
+    for (int i; i < 10; i++) {
+        [mutableArray addObject:[NSString stringWithFormat:@"%d", i+1]];
+    }
+    //    [mutableArray removeAllObjects];
+    [mutableArray removeLastObject];
+    [mutableArray removeObjectAtIndex:1];
+    [mutableArray insertObject:@"a" atIndex:0];
+    for (NSString *str in mutableArray) {
+        NSLog(@"%@", str);
+    }
+    
+    
+}
+
+/**
+ *  <pre>
+ *  测试集合<br>
+ *  1. 集合中的元素不重复,无序
+ *  </pre>
+ */
+void testNSSet(){
+    //    NSSet *set = [NSSet setWithObjects:@"1", @"2", @"5", @"3", @"2", nil];
+    //    NSLog(@"集合元素个数：%ld", [set count]);
+    //    NSArray *array = [set allObjects];
+    // 转成数组后排序
+    //    array = [array sortedArrayUsingSelector:@selector(compare:)];
+    
+    NSMutableSet *set = [NSMutableSet setWithCapacity:20];
+    // 添加元素
+    [set addObject:@"2"];
+    [set addObject:@"1"];
+    [set addObject:@"3"];
+    [set addObject:@"4"];
+    // 删除元素
+    [set removeObject:@"3"];
+    for (NSString *str in set) {
+        NSLog(@"%@", str);
+    }
+}
+
+/**
+ *  测试字典类
+ */
+void testDictionary(){
+    //    NSDictionary *dic = @{@"1":@"111", @"2":@"222"};
+    //    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:@"zhangsan", @"1", @"lisi", @"2", nil];
+    //    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:@"zhangsan", @"1", @"lisi", @"2", nil];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithCapacity:10];
+    // 添加元素
+    [dic setObject:@"zhangsan" forKey:@"1"];
+    [dic setObject:@"zhangsan" forKey:@"1"];
+    [dic setObject:@"wangwu" forKey:@"3"];
+    [dic setObject:@"lisi" forKey:@"2"];
+    // 删除元素
+    [dic removeObjectForKey:@"3"];
+    NSArray *keys = [dic allKeys];
+    for (NSString* key in keys) {
+        NSLog(@"key=%@, value=%@", key, [dic objectForKey:key]);
+    }
+}
+
+/**
+ *  测试包裹类<br>
+ *  1. 结构类数据(点，指针等)是不能直接保存在数组等集合中的，需要借助包裹类NSValue保存结构数据，然后存放在数组中<br>
+ *  2. 基本的数据类型也不能保存在集合中，可以使用NSNumber进行封装，NSNumber是NSValue的子类
+ */
+void testNSValue(){
+    // 简单的数据类型
+    NSArray *arr = [NSArray arrayWithObjects:[NSNumber numberWithInt:1], [NSNumber numberWithFloat:12.3], nil];
+    for (NSNumber *num in arr) {
+        NSLog(@"%g", [num floatValue]);
+    }
+    
+    // 复杂的数据类型
+    CGPoint point1 = {10, 10};
+    CGPoint point2 = {20, 20};
+    CGPoint point3 = {30, 30};
+    // 封装成对象
+    NSValue *v1 = [NSValue valueWithPoint:point1];
+    NSValue *v2 = [NSValue valueWithPoint:point2];
+    NSValue *v3 = [NSValue valueWithPoint:point3];
+    
+    NSArray *array = [NSArray arrayWithObjects:v1, v2, v3, nil];
+    for (NSValue* v in array) {
+        // 取出结构数据
+        CGPoint p = [v pointValue];
+        NSLog(@"x = %g, y = %g", p.x, p.y);
+    }
+}
+
+/**
+ *  集合数据操作文件
+ */
+void testCollection4File(){
+    // 数组
+    //        NSArray *arr =[NSArray arrayWithObjects:@"111", @"555", @"333", @"444", nil];
+    //        [arr writeToFile:@"array.plist" atomically:NO];
+    
+    //    NSArray *arr = [NSArray arrayWithContentsOfFile:@"array.plist"];
+    //    for (NSString *str in arr) {
+    //        NSLog(@"%@", str);
+    //    }
+    // 集合， 需要转成数组操作
+    //    NSSet *set = [[NSSet alloc] initWithObjects:@"zhangsan", @"lisi", @"wangwu", nil];
+    //    [[set allObjects] writeToFile:@"set.plist" atomically:NO];
+    
+    // 字典
+    //    [[[NSDictionary alloc] initWithObjectsAndKeys:@"zhangsan", @"1", @"lisi", @"3", @"wangwu", @"2", nil] writeToFile:@"dict.plist" atomically:NO];
+    NSLog(@"%@", [NSDictionary dictionaryWithContentsOfFile:@"dict.plist"]);
+}
+
+/**
+ *  NSData和NSMutableData用于保存二进制数据
+ */
+void testNSData(){
+    // 读取文件
+    NSData *data = [NSData dataWithContentsOfFile:@"a.png"];
+    NSLog(@"%ld", data.length);
+    unsigned char *ch = [data bytes];
+    NSLog(@"%x, %x", ch[0], ch[1]);
+    // 写入文件
+    [data writeToFile:@"b.jpg" atomically:NO];
+    
+}
+
+/**
+ *  测试protocol
+ */
+void testProtocol(){
+    ClassA *class = [[ClassA alloc] init];
+    [class initVal:3];
+    [class print];
+    
+    // 协议适用性检查
+    NSLog(@"对象class是否采用ProtocolA协议：%hhd", [class conformsToProtocol:@protocol(ProtocolA)]);
+    NSLog(@"类ClassA是否采用ProtocolB协议：%hhd", [ClassA conformsToProtocol:@protocol(ProtocolB)]);
+    
+    
 }
 
 /**
@@ -327,15 +606,57 @@ int main(int argc, const char * argv[])
     [pool drain];
      */
     @autoreleasepool {
-        // tes	tNSLog();
-        // testCircle();
-        // testReferenceCounter2();
-        // testStringWithFile();
-        // testMutableString();
-        // testArray();
-        // testKVC();
-        // testKVO();
-        testBlock();
+        // 格式化输出日志
+//        testNSLog();
+        
+        // 类相关：定义，实现，初始化，深浅复制，property，category等
+//        testCircle();
+//
+//        // 对象的引用计数
+//        testReferenceCounter();
+//        testReferenceCounter2();
+//        
+//        // 四种常用的结构(点，大小，矩形，范围)
+//        testStruct();
+//        
+//        // 字符串
+//        testString();
+//        
+//        // 字符串方法
+//        testStringMethod();
+//        
+//        // 可变字符串
+//        testMutableString();
+//        
+//        // 数组
+//        testArray();
+//        
+//        // 集合
+//        testNSSet();
+//        
+//        // 字典
+//        testDictionary();
+//        
+//        // 包裹类
+//        testNSValue();
+//        
+//        // 集合操作文件
+//        testCollection4File();
+//        
+//        // NSData操作二进制文件
+//        testNSData();
+//        
+//        // 协议
+//        testProtocol();
+//        
+//        // 代码块
+//        testBlock();
+//        
+//        // KVC
+//        testKVC();
+//        
+//        // KVO
+//        testKVO();
     }
     return 0;
 }

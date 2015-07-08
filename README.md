@@ -19,3 +19,5 @@ the snippets for the study of iOS
     测试kvc(key value coding)
 8. testKVO()
     测试KVO(key value observing)
+9. testBlock()
+    测试代码块block

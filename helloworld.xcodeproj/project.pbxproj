@@ -42,6 +42,7 @@
 		6A1F295F1B56CD24009BA824 /* ProtocolA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolA.m; sourceTree = "<group>"; };
 		6A1F29611B56CDFE009BA824 /* ClassA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassA.h; sourceTree = "<group>"; };
 		6A1F29621B56CDFE009BA824 /* ClassA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassA.m; sourceTree = "<group>"; };
+		6A1F29641B56CF3D009BA824 /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
 		6A6F13A21B21632600DE4DAE /* Circle+ellipse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Circle+ellipse.h"; sourceTree = "<group>"; };
 		6A6F13A31B21632600DE4DAE /* Circle+ellipse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Circle+ellipse.m"; sourceTree = "<group>"; };
 		6AB726491B22CBD500B5AD59 /* XYPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPoint.h; sourceTree = "<group>"; };
@@ -108,6 +109,7 @@
 		6A06B0CD1B1F360C00E8BACE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6A1F29641B56CF3D009BA824 /* a.png */,
 				6A06B0CE1B1F360C00E8BACE /* helloworld-Prefix.pch */,
 			);
 			name = "Supporting Files";

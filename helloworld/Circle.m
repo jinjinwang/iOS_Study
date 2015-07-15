@@ -139,8 +139,16 @@
     
 }
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"I'm the circle!"];
+-(id)copyWithZone:(NSZone *)zone{
+    Circle *circle = [[super class] allocWithZone:zone];
+    
+    circle.radius = self.radius;
+    circle.origin = self.origin;
+    
+    return circle;
+}
+
+- (NSString *)description{
+    return [NSString stringWithFormat:@"I'm the circle!The radius is %d", self.radius];
 }
 @end

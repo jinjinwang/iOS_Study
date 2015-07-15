@@ -10,7 +10,7 @@
 #import "XYPoint.h"
 
 @class XYPoint; // 前向声明（提高程序运行的效率）
-@interface Circle : NSObject
+@interface Circle : NSObject<NSCopying>
 {
     int radius;
     // int x;

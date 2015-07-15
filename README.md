@@ -36,3 +36,5 @@ the snippets for the study of iOS
     测试kvc(key value coding)
 17. testKVO()
     测试KVO(key value observing)
+18. testCopying()
+    对象的拷贝

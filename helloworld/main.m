@@ -598,6 +598,48 @@ void testBlock(){
     NSLog(@"b = %d", b(2, 1));
 }
 
+/**
+ *  测试对象的复制
+ */
+void testCopying(){
+    NSString *str = @"123";
+    
+    // 创建一个不可变的副本
+    NSString *str2 = [str copy];
+    NSLog(@"nsstring copy : %i", str2 == str);
+    
+    // 创建一个可变的副本
+    NSString *str3 = [str mutableCopy];
+    NSLog(@"nsstring mutablecopy : %i", str == str3);
+    
+    NSMutableString *mstr = [NSMutableString stringWithFormat:@"abc"];
+    NSString *mstr1 = [mstr copy];
+    NSMutableString *mstr2 = [mstr mutableCopy];
+    
+    [mstr appendFormat:@"12"];
+    NSLog(@"nsmutablestring copy : %i", mstr == mstr1);
+    NSLog(@"nsmutablestring mutablecopy : %i", mstr == mstr2);
+    
+    NSLog(@"mstr : %@", mstr);
+    NSLog(@"mstr1 : %@", mstr1);
+    NSLog(@"mstr2 : %@", mstr2);
+    
+    // 对象的复制
+    Circle *circle = [[Circle alloc] init];
+    XYPoint *point = [[XYPoint alloc] init];
+    [point setX:1 andY:2];
+    [circle initOrigin:point andRadius:3];
+    
+    /**
+     *  1. Circle必须实现NSCopying协议
+     *  2. 需要重写- (id)copyWithZone:(NSZone *)zone方法
+     */
+    Circle *circle2 = [circle copy];
+    NSLog(@"%@", circle);
+    NSLog(@"%@", circle2);
+    
+}
+
 int main(int argc, const char * argv[])
 {
     /*
@@ -657,6 +699,9 @@ int main(int argc, const char * argv[])
 //        
 //        // KVO
 //        testKVO();
+        
+        // 对象的拷贝
+        testCopying();
     }
     return 0;
 }

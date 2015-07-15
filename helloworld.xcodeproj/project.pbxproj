@@ -11,6 +11,8 @@
 		6A06B0CC1B1F360C00E8BACE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A06B0CB1B1F360C00E8BACE /* main.m */; };
 		6A06B0D01B1F360C00E8BACE /* helloworld.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6A06B0CF1B1F360C00E8BACE /* helloworld.1 */; };
 		6A06B0D81B1F65E400E8BACE /* Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A06B0D71B1F65E400E8BACE /* Circle.m */; };
+		6A1F29601B56CD24009BA824 /* ProtocolA.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1F295F1B56CD24009BA824 /* ProtocolA.m */; };
+		6A1F29631B56CDFE009BA824 /* ClassA.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A1F29621B56CDFE009BA824 /* ClassA.m */; };
 		6A6F13A41B21632600DE4DAE /* Circle+ellipse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6F13A31B21632600DE4DAE /* Circle+ellipse.m */; };
 		6AB7264B1B22CBD500B5AD59 /* XYPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB7264A1B22CBD500B5AD59 /* XYPoint.m */; };
 /* End PBXBuildFile section */
@@ -37,6 +39,9 @@
 		6A06B0CF1B1F360C00E8BACE /* helloworld.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = helloworld.1; sourceTree = "<group>"; };
 		6A06B0D61B1F65E400E8BACE /* Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Circle.h; sourceTree = "<group>"; };
 		6A06B0D71B1F65E400E8BACE /* Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Circle.m; sourceTree = "<group>"; };
+		6A1F295F1B56CD24009BA824 /* ProtocolA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProtocolA.m; sourceTree = "<group>"; };
+		6A1F29611B56CDFE009BA824 /* ClassA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassA.h; sourceTree = "<group>"; };
+		6A1F29621B56CDFE009BA824 /* ClassA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassA.m; sourceTree = "<group>"; };
 		6A6F13A21B21632600DE4DAE /* Circle+ellipse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Circle+ellipse.h"; sourceTree = "<group>"; };
 		6A6F13A31B21632600DE4DAE /* Circle+ellipse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Circle+ellipse.m"; sourceTree = "<group>"; };
 		6AB726491B22CBD500B5AD59 /* XYPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPoint.h; sourceTree = "<group>"; };
@@ -91,6 +96,9 @@
 				6A06B0D71B1F65E400E8BACE /* Circle.m */,
 				6A6F13A21B21632600DE4DAE /* Circle+ellipse.h */,
 				6A6F13A31B21632600DE4DAE /* Circle+ellipse.m */,
+				6A1F29611B56CDFE009BA824 /* ClassA.h */,
+				6A1F29621B56CDFE009BA824 /* ClassA.m */,
+				6A1F295F1B56CD24009BA824 /* ProtocolA.m */,
 				6AB726491B22CBD500B5AD59 /* XYPoint.h */,
 				6AB7264A1B22CBD500B5AD59 /* XYPoint.m */,
 			);
@@ -156,9 +164,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A1F29601B56CD24009BA824 /* ProtocolA.m in Sources */,
 				6A6F13A41B21632600DE4DAE /* Circle+ellipse.m in Sources */,
 				6A06B0CC1B1F360C00E8BACE /* main.m in Sources */,
 				6A06B0D81B1F65E400E8BACE /* Circle.m in Sources */,
+				6A1F29631B56CDFE009BA824 /* ClassA.m in Sources */,
 				6AB7264B1B22CBD500B5AD59 /* XYPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
